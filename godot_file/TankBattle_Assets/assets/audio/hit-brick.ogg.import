@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hit-brick.ogg-0ce4ec520ae230e2687d8de621b5c879.oggstr"
+
+[deps]
+
+source_file="res://TankBattle_Assets/assets/audio/hit-brick.ogg"
+dest_files=[ "res://.import/hit-brick.ogg-0ce4ec520ae230e2687d8de621b5c879.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

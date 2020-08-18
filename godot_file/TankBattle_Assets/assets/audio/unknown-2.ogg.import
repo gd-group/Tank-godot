@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/unknown-2.ogg-345f0603da76df0f8ee9875beaaa822f.oggstr"
+
+[deps]
+
+source_file="res://TankBattle_Assets/assets/audio/unknown-2.ogg"
+dest_files=[ "res://.import/unknown-2.ogg-345f0603da76df0f8ee9875beaaa822f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

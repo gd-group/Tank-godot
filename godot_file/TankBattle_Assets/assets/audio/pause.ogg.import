@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/pause.ogg-61ee7c5c3cac76d41f121716572a31be.oggstr"
+
+[deps]
+
+source_file="res://TankBattle_Assets/assets/audio/pause.ogg"
+dest_files=[ "res://.import/pause.ogg-61ee7c5c3cac76d41f121716572a31be.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hit-steel.ogg-105835f90d3fb3127833ce2ee57b5f5e.oggstr"
+
+[deps]
+
+source_file="res://TankBattle_Assets/assets/audio/hit-steel.ogg"
+dest_files=[ "res://.import/hit-steel.ogg-105835f90d3fb3127833ce2ee57b5f5e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/powerup-pickup.ogg-f0318bcbd12683613827b44c8b3962ba.oggstr"
+
+[deps]
+
+source_file="res://TankBattle_Assets/assets/audio/powerup-pickup.ogg"
+dest_files=[ "res://.import/powerup-pickup.ogg-f0318bcbd12683613827b44c8b3962ba.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

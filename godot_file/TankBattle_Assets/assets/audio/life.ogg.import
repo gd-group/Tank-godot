@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/life.ogg-a2425cbd3cff17f0f7d853d24f2c8f74.oggstr"
+
+[deps]
+
+source_file="res://TankBattle_Assets/assets/audio/life.ogg"
+dest_files=[ "res://.import/life.ogg-a2425cbd3cff17f0f7d853d24f2c8f74.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

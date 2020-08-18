@@ -1,0 +1,50 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://TankBattle_Assets/assets/sprite/tank_y1/0.png" type="Texture" id=1]
+[ext_resource path="res://TankBattle_Assets/assets/sprite/tank_y1/1.png" type="Texture" id=2]
+[ext_resource path="res://TankBattle_Assets/assets/sprite/tank_y1/5.png" type="Texture" id=3]
+[ext_resource path="res://TankBattle_Assets/assets/sprite/tank_y1/4.png" type="Texture" id=4]
+[ext_resource path="res://TankBattle_Assets/assets/sprite/tank_y1/2.png" type="Texture" id=5]
+[ext_resource path="res://TankBattle_Assets/assets/sprite/tank_y1/3.png" type="Texture" id=6]
+[ext_resource path="res://TankBattle_Assets/assets/sprite/tank_y1/6.png" type="Texture" id=7]
+[ext_resource path="res://TankBattle_Assets/assets/sprite/tank_y1/7.png" type="Texture" id=8]
+[ext_resource path="res://player.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25.8578, 32.1542 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "up",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+} ]
+
+[node name="player" type="Area2D"]
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "up"
+playing = true
+[connection signal="body_entered" from="." to="." method="_on_player_body_entered"]
+[connection signal="fire" from="." to="." method="_on_player_fire"]
