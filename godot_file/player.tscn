@@ -36,8 +36,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="player" type="Area2D"]
+[node name="player" type="KinematicBody2D"]
+position = Vector2( 26.4883, 32.3746 )
 script = ExtResource( 9 )
+speed = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -46,5 +48,4 @@ shape = SubResource( 1 )
 frames = SubResource( 2 )
 animation = "up"
 playing = true
-[connection signal="body_entered" from="." to="." method="_on_player_body_entered"]
 [connection signal="fire" from="." to="." method="_on_player_fire"]

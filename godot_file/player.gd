@@ -1,8 +1,8 @@
-extends Area2D
+extends KinematicBody2D
 signal fire
 
 var screen_size : Vector2
-export var speed := 400 
+export var speed := 250
 var bullet = preload("res://bullet.tscn")
 
 func _ready() -> void:
@@ -11,23 +11,29 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var velocity = Vector2()
-	if Input.is_action_pressed("ui_right"):
+	if !(Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")):
+		position = Vector2(round(position.x/32)*32,round(position.y/32)*32)
+	if Input.is_action_pressed("ui_right"): 
 		velocity.x += 1
 		$AnimatedSprite.set_animation('right')
+		$CollisionShape2D.rotation_degrees = -90
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= 1
 		$AnimatedSprite.set_animation('left')
+		$CollisionShape2D.rotation_degrees = 90
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
 		$AnimatedSprite.set_animation('up')
+		$CollisionShape2D.rotation_degrees = 0
 	if Input.is_action_pressed("ui_down"):
 		velocity.y += 1
 		$AnimatedSprite.set_animation('down')
+		$CollisionShape2D.rotation_degrees = 180
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-	position += velocity * delta 
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	position += move_and_slide(velocity) * delta 
+	position.x = clamp(position.x, 28, screen_size.x - 28)
+	position.y = clamp(position.y, 28, screen_size.y - 28)
 	if Input.is_action_just_pressed("ui_fire"):
 		emit_signal("fire")
 
@@ -35,26 +41,25 @@ func _process(delta: float) -> void:
 func _on_player_fire() -> void:
 	var temp : Node = bullet.instance()
 	get_parent().add_child(temp)
-	print(get_parent().collision_layer == get_parent().get_children()[0].collision_layer)
+	temp.connect("bullet_hit",get_parent(),"hit_block")
 	if $AnimatedSprite.get_animation() == 'up':
 		temp.position = Vector2(position.x,position.y - 64)
-		temp.linear_velocity = Vector2(0,-700)
+		temp.linear_velocity = Vector2(0,-500)
 		temp.rotation_degrees = 0
 	if $AnimatedSprite.get_animation() == 'down':
 		temp.position = Vector2(position.x,position.y + 64)
-		temp.linear_velocity = Vector2(0,700)
+		temp.linear_velocity = Vector2(0,500)
 		temp.rotation_degrees = 180
-	if $AnimatedSprite.get_animation() == 'left':
+	if $AnimateSprite.get_animation() == 'left':
 		temp.position = Vector2(position.x - 64,position.y)
-		temp.linear_velocity = Vector2(-700,0)
+		temp.linear_velocity = Vector2(-500,0)
 		temp.rotation_degrees = 270
 	if $AnimatedSprite.get_animation() == 'right':
 		temp.position = Vector2(position.x + 64,position.y)
-		temp.linear_velocity = Vector2(700,0)
+		temp.linear_velocity = Vector2(500,0)
 		temp.rotation_degrees = 90
 
 
 
 
-func _on_player_body_entered(body: Node) -> void:
-	print("ok")
+

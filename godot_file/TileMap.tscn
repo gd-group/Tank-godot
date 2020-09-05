@@ -92,4 +92,14 @@ tile_data = PoolIntArray( 4, 0, 0, 5, 0, 0, 8, 0, 0, 9, 0, 0, 12, 0, 0, 13, 0, 0
 script = ExtResource( 3 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 359.594, 566.36 )
+position = Vector2( 371.946, 579.822 )
+speed = 250
+
+[node name="enemy_spawn_timer" type="Timer" parent="."]
+
+[node name="enemy_fire_timer" type="Timer" parent="."]
+
+[node name="spawn_point" type="Position2D" parent="."]
+position = Vector2( 480.936, 132.556 )
+[connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="enemy_fire_timer" to="." method="_on_enemy_fire_timer_timeout"]
