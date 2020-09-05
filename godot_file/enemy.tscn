@@ -12,11 +12,6 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "up",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "left",
@@ -25,6 +20,11 @@ animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
@@ -54,15 +54,19 @@ shape = SubResource( 2 )
 [node name="r_down" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, 60 )
+collision_mask = 2
 
 [node name="r_up" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, -60 )
+collision_mask = 2
 
 [node name="r_right" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 50, 0 )
+collision_mask = 2
 
 [node name="r_left" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( -50, 0 )
+collision_mask = 2

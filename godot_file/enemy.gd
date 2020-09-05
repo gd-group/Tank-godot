@@ -6,8 +6,8 @@ var screen_size : Vector2
 var velocity = Vector2()
 var saved_pos
 var enemy_dir = { \
-	'up' : [Vector2(0,-1),'up'],\
-	'down' : [Vector2(0,1),'down']}
+	'up' : [Vector2(0,-50),'up'],\
+	'down' : [Vector2(0,50),'down']}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,24 +37,23 @@ func _physics_process(delta: float) -> void:
 		for i in dir:
 			if temp_dict[i] == true:
 				print(i)
-				velocity += enemy_dir[i][0]
+				velocity = enemy_dir[i][0]
 				$AnimatedSprite.set_animation(enemy_dir[i][1])
 				saved_pos = i
-	if dir_ct == 2: # situation for two available direction, sometimes animation flickers
+	if dir_ct == 2: # situation for two available direction, it waits for the velocity to change to Zero
 		for i in dir:
 			if i == saved_pos:
-				for g in range(15):
+				for g in range(100): #weight of current direction; but it changes a lot so please check here....
 					temp_ran.append(i)
 			else:
 				temp_ran.append(i)
 		var select = temp_ran[int(rand_range(0,len(temp_ran)))]
-		velocity += enemy_dir[select][0]
+		print(select)
+		velocity = enemy_dir[select][0]
 		$AnimatedSprite.set_animation(enemy_dir[select][1])
-		print('here')
+		saved_pos = select
 		print(temp_dict)
-		
-	print(velocity)
-		
+
 	position += move_and_slide(velocity) * delta 
 	position.x = clamp(position.x, 28, screen_size.x - 28)
 	position.y = clamp(position.y, 28, screen_size.y - 28)
