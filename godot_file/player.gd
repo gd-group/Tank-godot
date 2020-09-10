@@ -39,23 +39,24 @@ func _process(delta: float) -> void:
 
 
 func _on_player_fire() -> void:
-	var temp : Node = bullet.instance()
+	var temp : Bullet = bullet.instance()
 	get_parent().add_child(temp)
 	temp.connect("bullet_hit",get_parent(),"hit_block")
+	temp.set_collision_mask_bit(1, true)
 	if $AnimatedSprite.get_animation() == 'up':
-		temp.position = Vector2(position.x,position.y - 64)
+		temp.position = Vector2(position.x,position.y - 32)
 		temp.linear_velocity = Vector2(0,-500)
 		temp.rotation_degrees = 0
 	if $AnimatedSprite.get_animation() == 'down':
-		temp.position = Vector2(position.x,position.y + 64)
+		temp.position = Vector2(position.x,position.y + 32)
 		temp.linear_velocity = Vector2(0,500)
 		temp.rotation_degrees = 180
-	if $AnimateSprite.get_animation() == 'left':
-		temp.position = Vector2(position.x - 64,position.y)
+	if $AnimatedSprite.get_animation() == 'left':
+		temp.position = Vector2(position.x - 32,position.y)
 		temp.linear_velocity = Vector2(-500,0)
 		temp.rotation_degrees = 270
 	if $AnimatedSprite.get_animation() == 'right':
-		temp.position = Vector2(position.x + 64,position.y)
+		temp.position = Vector2(position.x + 32,position.y)
 		temp.linear_velocity = Vector2(500,0)
 		temp.rotation_degrees = 90
 

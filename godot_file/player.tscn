@@ -15,14 +15,14 @@ extents = Vector2( 25.8578, 32.1542 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "left",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
@@ -38,6 +38,7 @@ animations = [ {
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 26.4883, 32.3746 )
+collision_mask = 2
 script = ExtResource( 9 )
 speed = 100
 
@@ -47,5 +48,6 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "up"
+frame = 1
 playing = true
 [connection signal="fire" from="." to="." method="_on_player_fire"]
