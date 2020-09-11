@@ -12,14 +12,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "right",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
@@ -46,27 +46,56 @@ script = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
 [node name="r_down" type="RayCast2D" parent="."]
+position = Vector2( -25, 0 )
 enabled = true
 cast_to = Vector2( 0, 60 )
-collision_mask = 2
+collision_mask = 4
+
+[node name="r_down2" type="RayCast2D" parent="."]
+position = Vector2( 25, 0 )
+enabled = true
+cast_to = Vector2( 0, 60 )
+collision_mask = 4
 
 [node name="r_up" type="RayCast2D" parent="."]
+position = Vector2( -25, 0 )
 enabled = true
 cast_to = Vector2( 0, -60 )
-collision_mask = 2
+collision_mask = 4
+
+[node name="r_up2" type="RayCast2D" parent="."]
+position = Vector2( 25, 0 )
+enabled = true
+cast_to = Vector2( 0, -60 )
+collision_mask = 4
 
 [node name="r_right" type="RayCast2D" parent="."]
+position = Vector2( 0, -29 )
 enabled = true
 cast_to = Vector2( 50, 0 )
-collision_mask = 2
+collision_mask = 4
+
+[node name="r_right2" type="RayCast2D" parent="."]
+position = Vector2( 0, 29 )
+enabled = true
+cast_to = Vector2( 50, 0 )
+collision_mask = 4
 
 [node name="r_left" type="RayCast2D" parent="."]
+position = Vector2( 0, 29 )
 enabled = true
 cast_to = Vector2( -50, 0 )
-collision_mask = 2
+collision_mask = 4
+
+[node name="r_left2" type="RayCast2D" parent="."]
+position = Vector2( 0, -29 )
+enabled = true
+cast_to = Vector2( -50, 0 )
+collision_mask = 4

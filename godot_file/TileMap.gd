@@ -2,8 +2,9 @@ extends TileMap
 var contact_brick_pos = []
 var enemy = preload("res://enemy.tscn")
 var bullet = preload("res://bullet.tscn")
-var enemy_fire_time = [1,3]
-
+var enemy_fire_time = [0.5,3]
+var enemy_total = 3
+var init = true
 
 
 func _ready() -> void:
@@ -24,14 +25,25 @@ func hit_block(ancL, ancR):
 
 
 func _on_enemy_spawn_timer_timeout() -> void:
-	var temp_enemy : Node = enemy.instance()
-	get_parent().add_child(temp_enemy)
-	temp_enemy.position = $spawn_point.position
-	temp_enemy.connect("enemy_killed",self,"enemy_respawn")
+	var ran = [$spawn_point.position,$spawn_point2.position,$spawn_point3.position]
+	var count = get_tree().get_nodes_in_group('enemy')
+	if init == true:
+		for _i in range(enemy_total - len(count)):
+			var temp_enemy : Node = enemy.instance()
+			get_parent().add_child(temp_enemy)
+			temp_enemy.position = ran[_i]
+			temp_enemy.connect("enemy_killed",self,"enemy_respawn")
+	else:
+		for _i in range(enemy_total - len(count)):
+			var temp_enemy : Node = enemy.instance()
+			get_parent().add_child(temp_enemy)
+			temp_enemy.position = ran[int(rand_range(0,len(ran)))]
+			temp_enemy.connect("enemy_killed",self,"enemy_respawn")
 	$enemy_spawn_timer.stop()
 
 func enemy_respawn():
 	$enemy_spawn_timer.start(5)
+	init = false
 	
 
 
