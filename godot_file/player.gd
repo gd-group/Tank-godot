@@ -1,5 +1,6 @@
 extends KinematicBody2D
 signal fire
+signal hit_by
 
 var screen_size : Vector2
 export var speed := 250
@@ -39,7 +40,7 @@ func _process(delta: float) -> void:
 
 
 func _on_player_fire() -> void:
-	var temp : Bullet = bullet.instance()
+	var temp = bullet.instance()
 	get_parent().add_child(temp)
 	temp.connect("bullet_hit",get_parent(),"hit_block")
 	temp.set_collision_mask_bit(1, true)
@@ -60,7 +61,10 @@ func _on_player_fire() -> void:
 		temp.linear_velocity = Vector2(500,0)
 		temp.rotation_degrees = 90
 
-
+func on_hit():
+	emit_signal("hit_by")
+	
+	
 
 
 

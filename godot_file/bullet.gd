@@ -9,6 +9,8 @@ func _ready() -> void:
 func _on_bullet_body_entered(body: Node) -> void:
 	if body is Enemy:
 		body.on_hit()
+	elif body is KinematicBody2D :
+		body.on_hit()
 		
 	emit_signal("bullet_hit",$AncL.get_global_position(),$AncR.get_global_position())
 	queue_free()
